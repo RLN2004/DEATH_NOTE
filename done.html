@@ -1,0 +1,56 @@
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style> 
+.countdown{ 
+  font-size: 250px; 
+  color: white;
+  padding: 50px;
+  margin: auto;
+  padding-left: 50px;
+} 
+
+body{
+    background-color: black;
+}
+.btn{
+    margin-top: 90px;
+    margin-bottom: 50px;
+    border: 0;
+    font-weight: bolder;
+    border-radius: 5px;
+    font-size: 100px;
+    
+    color: white;
+    padding: 10px;
+    background-color: rgb(75, 92, 92);
+}
+</style> 
+</head> 
+<body> 
+<center><div class="countdown"></div>
+    <button class="btn"onclick="homeFunc()">BACK</button>
+</center>
+<script> 
+    var timer2 = "0:40";
+    var interval = setInterval(function() {
+      var timer = timer2.split(':');
+      //by parsing integer, I avoid all extra string processing
+      var minutes = parseInt(timer[0], 10);
+      var seconds = parseInt(timer[1], 10);--seconds;
+      minutes = (seconds < 0) ? --minutes : minutes;
+      seconds = (seconds < 0) ? 59 : seconds;
+      seconds = (seconds < 10) ? '0' + seconds : seconds;
+      //minutes = (minutes < 10) ?  minutes : minutes;
+      $('.countdown').html(minutes + ':' + seconds);
+      if (minutes < 0) clearInterval(interval);
+      //check if both minutes and seconds are 0
+      if ((seconds <= 0) && (minutes <= 0)) clearInterval(interval);
+      timer2 = minutes + ':' + seconds;}, 1000);
+      function homeFunc(){
+        location.href="rule.html"
+      }
+</script> 
+</body> 
+</html> 
